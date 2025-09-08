@@ -80,6 +80,10 @@ app.post('/api/subscribe', (req, res) => {
 
 app.get('/health', (_req, res) => res.json({ ok: true }));
 
-app.listen(port, () => {
-  console.log(`API server running on http://localhost:${port}`);
-});
+export { app };
+
+if (process.argv[1] === __filename && process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    console.log(`API server running on http://localhost:${port}`);
+  });
+}
