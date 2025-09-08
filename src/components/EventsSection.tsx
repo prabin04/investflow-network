@@ -1,6 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Users, Clock } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
+import { useState } from "react";
 
 const upcomingEvents = [
   {
@@ -45,7 +51,21 @@ const upcomingEvents = [
   }
 ];
 
+const SignupSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Valid email required"),
+  company: z.string().optional(),
+  jobTitle: z.string().optional(),
+  consent: z.literal(true, {
+    errorMap: () => ({ message: "Consent is required" }),
+  }),
+});
+
+type SignupForm = z.infer<typeof SignupSchema>;
+
 export const EventsSection = () => {
+  const [status, setStatus] = useState<string | null>(null);
+
   return (
     <div className="p-6 bg-surface-subtle">
       <div className="mb-6">
@@ -89,18 +109,70 @@ export const EventsSection = () => {
                 </div>
               </div>
               
-              <div className="flex gap-2 pt-2">
-                <Button variant="investment" size="sm" className="flex-1">
-                  Register
-                </Button>
-                <Button variant="outline" size="sm">
-                  Learn More
-                </Button>
-              </div>
+              <SignupInline eventId={event.id} onStatus={setStatus} />
             </CardContent>
           </Card>
         ))}
       </div>
+
+      {status ? (
+        <div className="mt-4 text-sm text-muted-foreground" role="status" aria-live="polite">{status}</div>
+      ) : null}
     </div>
+  );
+};
+
+const SignupInline = ({ eventId, onStatus }: { eventId: string; onStatus: (s: string) => void }) => {
+  const { register, handleSubmit, formState: { errors, isSubmitting }, reset } = useForm<SignupForm>({
+    resolver: zodResolver(SignupSchema),
+    defaultValues: { name: "", email: "", company: "", jobTitle: "", consent: false },
+  });
+
+  const onSubmit = async (values: SignupForm) => {
+    onStatus("");
+    try {
+      const res = await fetch(`/api/events/${eventId}/signup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        const errorText = data?.details?.map((d: any) => d.message).join(", ") || data?.error || "Signup failed";
+        onStatus(`Error: ${errorText}`);
+      } else {
+        onStatus("Signup successful");
+        reset();
+      }
+    } catch {
+      onStatus("Network error");
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 sm:grid-cols-2 gap-2 items-end" aria-label="Quick signup form">
+      <div>
+        <Input aria-label="Name" placeholder="Name*" {...register("name" as const)} />
+        {errors.name && <p className="text-xs text-red-600 mt-1">{errors.name.message}</p>}
+      </div>
+      <div>
+        <Input aria-label="Email" placeholder="Email*" type="email" {...register("email" as const)} />
+        {errors.email && <p className="text-xs text-red-600 mt-1">{errors.email.message}</p>}
+      </div>
+      <div>
+        <Input aria-label="Company" placeholder="Company" {...register("company" as const)} />
+      </div>
+      <div>
+        <Input aria-label="Job title" placeholder="Job title" {...register("jobTitle" as const)} />
+      </div>
+      <label className="flex items-center gap-2 text-sm sm:col-span-2 mt-1">
+        <Checkbox {...register("consent" as const)} />
+        <span>I agree to be contacted about this event</span>
+      </label>
+      {errors.consent && <p className="text-xs text-red-600 sm:col-span-2">{errors.consent.message}</p>}
+      <div className="sm:col-span-2 mt-1">
+        <Button type="submit" variant="investment" size="sm" disabled={isSubmitting}>Sign up</Button>
+      </div>
+    </form>
   );
 };
