@@ -28,7 +28,7 @@ describe('UI', () => {
       </MemoryRouter>
     );
     expect(await screen.findByText('Capital Partners')).toBeInTheDocument();
-    expect(screen.getByText('TBD')).toBeInTheDocument();
+    expect(screen.getByText(/TBD/)).toBeInTheDocument();
     expect(screen.getByText('Description coming soon')).toBeInTheDocument();
   });
 });

@@ -1,18 +1,15 @@
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import { z } from 'zod';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 const app = express();
 const port = process.env.PORT || 8787;
 
 app.use(express.json());
 
 const ensureDataFile = (filename) => {
-  const filePath = path.join(__dirname, '..', 'data', filename);
+  const filePath = path.join(process.cwd(), 'data', filename);
   if (!fs.existsSync(filePath)) {
     fs.mkdirSync(path.dirname(filePath), { recursive: true });
     fs.writeFileSync(filePath, '[]', 'utf8');
@@ -82,7 +79,7 @@ app.get('/health', (_req, res) => res.json({ ok: true }));
 
 export { app };
 
-if (process.argv[1] === __filename && process.env.NODE_ENV !== 'test') {
+if (process.env.NODE_ENV !== 'test') {
   app.listen(port, () => {
     console.log(`API server running on http://localhost:${port}`);
   });
