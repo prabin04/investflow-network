@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "slug": "capital-partners",
+    "name": "Capital Partners",
+    "logo_url": null,
+    "hero_image_url": null,
+    "tagline": "TBD — replace",
+    "description": null,
+    "website_url": null,
+    "location": null,
+    "industries": [],
+    "team": [],
+    "contact_email": "partners@capital.example",
+    "social_links": [],
+    "metadata": {}
+  }
+]
