@@ -13,16 +13,16 @@ const Index = () => {
       <div className="flex">
         <CapitalPartnersSidebar />
         <div className="flex-1">
-          <div id="companies" className="bg-surface-elevated">
+          <div id="companies" className="bg-surface-elevated bg-pattern-stripes">
             <CompanyGrid />
           </div>
-          <div id="events" className="bg-surface-subtle">
+          <div id="events" className="bg-surface-subtle bg-pattern-dots">
             <EventsSection />
           </div>
           <div id="meetings" className="bg-white">
             <MeetingArena />
           </div>
-          <div id="support" className="bg-muted">
+          <div id="support" className="bg-accent/30">
             <SupportFramework />
           </div>
         </div>
