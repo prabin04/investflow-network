@@ -50,6 +50,42 @@ export const CapitalPartnersSidebar = () => {
             <p className="text-xs text-text-secondary">Federal Grant Program</p>
           </div>
         </div>
+        
+        <div className="mt-6">
+          <h4 className="text-sm font-semibold text-text-primary mb-3">Norwegian & EU Partners</h4>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="p-2 bg-white rounded border border-border-light text-center">
+              <div className="w-8 h-8 mx-auto mb-1 bg-blue-100 rounded flex items-center justify-center">
+                <span className="text-xs font-bold text-blue-600">IN</span>
+              </div>
+              <p className="text-xs text-text-secondary">Innovation Norway</p>
+            </div>
+            <div className="p-2 bg-white rounded border border-border-light text-center">
+              <div className="w-8 h-8 mx-auto mb-1 bg-green-100 rounded flex items-center justify-center">
+                <span className="text-xs font-bold text-green-600">SF</span>
+              </div>
+              <p className="text-xs text-text-secondary">Skattefunn</p>
+            </div>
+            <div className="p-2 bg-white rounded border border-border-light text-center">
+              <div className="w-8 h-8 mx-auto mb-1 bg-purple-100 rounded flex items-center justify-center">
+                <span className="text-xs font-bold text-purple-600">SIVA</span>
+              </div>
+              <p className="text-xs text-text-secondary">SIVA</p>
+            </div>
+            <div className="p-2 bg-white rounded border border-border-light text-center">
+              <div className="w-8 h-8 mx-auto mb-1 bg-orange-100 rounded flex items-center justify-center">
+                <span className="text-xs font-bold text-orange-600">EDIH</span>
+              </div>
+              <p className="text-xs text-text-secondary">EDIH</p>
+            </div>
+            <div className="p-2 bg-white rounded border border-border-light text-center col-span-2">
+              <div className="w-8 h-8 mx-auto mb-1 bg-yellow-100 rounded flex items-center justify-center">
+                <span className="text-xs font-bold text-yellow-600">EU</span>
+              </div>
+              <p className="text-xs text-text-secondary">EU Innovation Programs</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
