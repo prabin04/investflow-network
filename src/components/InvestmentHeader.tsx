@@ -1,4 +1,4 @@
-import { TrendingUp } from "lucide-react";
+import { TrendingUp, Building2, CalendarDays, Handshake, LifeBuoy } from "lucide-react";
 
 export const InvestmentHeader = () => {
   return (
@@ -14,18 +14,22 @@ export const InvestmentHeader = () => {
           </div>
         </div>
         
-        <nav className="flex items-center gap-6">
-          <a href="#companies" className="text-sm font-medium text-text-primary hover:text-primary transition-colors">
-            Companies
+        <nav className="flex items-center gap-4">
+          <a href="#companies" className="group inline-flex items-center gap-2 rounded-md px-2 py-1 text-sm font-medium text-text-primary transition-all hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+            <Building2 className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" aria-hidden="true" />
+            <span>Companies</span>
           </a>
-          <a href="#events" className="text-sm font-medium text-text-secondary hover:text-primary transition-colors">
-            Events
+          <a href="#events" className="group inline-flex items-center gap-2 rounded-md px-2 py-1 text-sm font-medium text-text-secondary transition-all hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+            <CalendarDays className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" aria-hidden="true" />
+            <span>Events</span>
           </a>
-          <a href="#meetings" className="text-sm font-medium text-text-secondary hover:text-primary transition-colors">
-            Meeting Arena
+          <a href="#meetings" className="group inline-flex items-center gap-2 rounded-md px-2 py-1 text-sm font-medium text-text-secondary transition-all hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+            <Handshake className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" aria-hidden="true" />
+            <span>Meeting Arena</span>
           </a>
-          <a href="#support" className="text-sm font-medium text-text-secondary hover:text-primary transition-colors">
-            Support
+          <a href="#support" className="group inline-flex items-center gap-2 rounded-md px-2 py-1 text-sm font-medium text-text-secondary transition-all hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+            <LifeBuoy className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" aria-hidden="true" />
+            <span>Support</span>
           </a>
         </nav>
       </div>
