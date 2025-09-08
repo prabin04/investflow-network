@@ -11,7 +11,7 @@ const capitalPartners = [
 
 export const CapitalPartnersSidebar = () => {
   return (
-    <div className="w-72 bg-surface-subtle border-r border-border-light p-6">
+    <div className="w-72 max-w-full bg-surface-subtle border-r border-border-light p-6 md:sticky md:top-0 md:h-[calc(100vh-64px)] overflow-auto">
       <div className="mb-6">
         <h2 className="text-lg font-semibold text-text-primary mb-4">Capital Partners</h2>
         <div className="space-y-3">

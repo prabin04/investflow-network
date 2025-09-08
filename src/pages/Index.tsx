@@ -10,8 +10,10 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <InvestmentHeader />
       
-      <div className="flex">
-        <CapitalPartnersSidebar />
+      <div className="flex flex-col md:flex-row">
+        <div className="hidden md:block">
+          <CapitalPartnersSidebar />
+        </div>
         <div className="flex-1">
           <div id="companies" className="bg-surface-elevated bg-pattern-stripes">
             <CompanyGrid />
