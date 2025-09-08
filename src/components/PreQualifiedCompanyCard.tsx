@@ -30,18 +30,30 @@ export const PreQualifiedCompanyCard = ({ imageSrc, imageAlt, name, description 
           <p className="text-sm text-text-secondary mt-1 line-clamp-2">{displayDescription}</p>
         </div>
 
-        <div className="flex flex-wrap gap-2">
-          <Button variant="outline" size="sm" className="flex-1 min-w-[140px]">
-            <TrendingUp className="w-4 h-4 mr-2" />
-            Market Potential
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            className="inline-flex items-center justify-center gap-2 w-full"
+          >
+            <TrendingUp className="w-4 h-4 shrink-0" aria-hidden="true" />
+            <span className="truncate">Market Potential</span>
           </Button>
-          <Button variant="outline" size="sm" className="flex-1 min-w-[140px]">
-            <BarChart3 className="w-4 h-4 mr-2" />
-            Competitive Analysis
+          <Button
+            variant="outline"
+            size="sm"
+            className="inline-flex items-center justify-center gap-2 w-full"
+          >
+            <BarChart3 className="w-4 h-4 shrink-0" aria-hidden="true" />
+            <span className="truncate">Competitive Analysis</span>
           </Button>
-          <Button variant="outline" size="sm" className="w-full">
-            <Shield className="w-4 h-4 mr-2" />
-            Due Diligence
+          <Button
+            variant="outline"
+            size="sm"
+            className="inline-flex items-center justify-center gap-2 w-full sm:col-span-2"
+          >
+            <Shield className="w-4 h-4 shrink-0" aria-hidden="true" />
+            <span className="truncate">Due Diligence</span>
           </Button>
         </div>
       </div>
