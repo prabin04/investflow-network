@@ -9,20 +9,23 @@ export const InvestmentHeader = () => {
             <TrendingUp className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h1 className="text-xl font-bold text-text-primary">InvestMatch</h1>
-            <p className="text-sm text-text-secondary">Connecting investors with vetted companies</p>
+            <h1 className="text-xl font-bold text-text-primary">InvestMatch Helgeland</h1>
+            <p className="text-sm text-text-secondary">Connecting investors with Northern Norway's innovation ecosystem</p>
           </div>
         </div>
         
         <nav className="flex items-center gap-6">
-          <a href="#" className="text-sm font-medium text-text-primary hover:text-primary transition-colors">
-            Dashboard
+          <a href="#companies" className="text-sm font-medium text-text-primary hover:text-primary transition-colors">
+            Companies
           </a>
-          <a href="#" className="text-sm font-medium text-text-secondary hover:text-primary transition-colors">
-            Portfolio
+          <a href="#events" className="text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+            Events
           </a>
-          <a href="#" className="text-sm font-medium text-text-secondary hover:text-primary transition-colors">
-            Analytics
+          <a href="#meetings" className="text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+            Meeting Arena
+          </a>
+          <a href="#support" className="text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+            Support
           </a>
         </nav>
       </div>
