@@ -1,0 +1,237 @@
+openapi: 3.0.3
+info:
+  title: Investflow Network API
+  version: 0.1.0
+  description: >-
+    API specification for company directory, event signup, and newsletter subscribe.
+    Do not fabricate data. Validation is strict and fails fast.
+servers:
+  - url: http://localhost:5173
+paths:
+  /api/companies:
+    get:
+      summary: List companies
+      responses:
+        '200':
+          description: An array of companies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompanyArray'
+              examples:
+                example:
+                  value:
+                    - id: "1"
+                      slug: "capital-partners"
+                      name: "Capital Partners"
+                      tagline: "TBD — replace"
+                      logo_url: null
+                      hero_image_url: null
+                      description: null
+                      website_url: null
+                      location: null
+                      industries: []
+                      team: []
+                      contact_email: "partners@capital.example"
+                      social_links: []
+                      metadata: {}
+        '500':
+          description: Server error
+  /api/companies/{slug}:
+    get:
+      summary: Get company by slug
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Company details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+              examples:
+                example:
+                  value:
+                    id: "1"
+                    slug: "capital-partners"
+                    name: "Capital Partners"
+                    tagline: "TBD — replace"
+                    logo_url: null
+                    hero_image_url: null
+                    description: null
+                    website_url: null
+                    location: null
+                    industries: []
+                    team: []
+                    contact_email: "partners@capital.example"
+                    social_links: []
+                    metadata: {}
+        '404':
+          description: Company not found
+  /api/events/{eventId}/signup:
+    post:
+      summary: Quick signup for an event
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventSignupRequest'
+            examples:
+              valid:
+                value:
+                  name: "Ada Lovelace"
+                  email: "ada@example.com"
+                  company: "Analytical Engines"
+                  jobTitle: "Founder"
+                  consent: true
+      responses:
+        '200':
+          description: Signup accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventSignupResponse'
+              examples:
+                example:
+                  value:
+                    ok: true
+                    id: "signup_123"
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+              examples:
+                missingFields:
+                  value:
+                    ok: false
+                    error: "Invalid request body"
+                    details:
+                      - field: "email"
+                        message: "Invalid email"
+        '500':
+          description: Server error
+  /api/subscribe:
+    post:
+      summary: Subscribe to newsletter
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscribeRequest'
+            examples:
+              valid:
+                value:
+                  email: "user@example.com"
+      responses:
+        '200':
+          description: Subscription accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscribeResponse'
+              examples:
+                example:
+                  value:
+                    ok: true
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+        '500':
+          description: Server error
+components:
+  schemas:
+    Company:
+      type: object
+      additionalProperties: false
+      required: [id, slug, name]
+      properties:
+        id: { type: string, minLength: 1 }
+        slug: { type: string, minLength: 1 }
+        name: { type: string, minLength: 1 }
+        logo_url: { type: string, format: uri, nullable: true }
+        hero_image_url: { type: string, format: uri, nullable: true }
+        tagline: { type: string, nullable: true }
+        description: { type: string, nullable: true }
+        website_url: { type: string, format: uri, nullable: true }
+        location: { type: string, nullable: true }
+        industries:
+          type: array
+          items: { type: string }
+          default: []
+        team:
+          type: array
+          items: { type: string }
+          default: []
+        contact_email: { type: string, format: email, nullable: true }
+        social_links:
+          type: array
+          items: { type: string, format: uri }
+          default: []
+        metadata:
+          type: object
+          additionalProperties: true
+          default: {}
+    CompanyArray:
+      type: array
+      items:
+        $ref: '#/components/schemas/Company'
+    EventSignupRequest:
+      type: object
+      additionalProperties: false
+      required: [name, email, consent]
+      properties:
+        name: { type: string, minLength: 1 }
+        email: { type: string, format: email }
+        company: { type: string }
+        jobTitle: { type: string }
+        consent: { type: boolean }
+    EventSignupResponse:
+      type: object
+      additionalProperties: false
+      required: [ok, id]
+      properties:
+        ok: { type: boolean }
+        id: { type: string }
+    SubscribeRequest:
+      type: object
+      additionalProperties: false
+      required: [email]
+      properties:
+        email: { type: string, format: email }
+    SubscribeResponse:
+      type: object
+      additionalProperties: false
+      required: [ok]
+      properties:
+        ok: { type: boolean }
+    ValidationError:
+      type: object
+      additionalProperties: false
+      required: [ok, error]
+      properties:
+        ok: { type: boolean, enum: [false] }
+        error: { type: string }
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              field: { type: string }
+              message: { type: string }
