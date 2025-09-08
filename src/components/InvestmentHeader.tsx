@@ -1,4 +1,4 @@
-import { TrendingUp, Building2, CalendarDays, Handshake, LifeBuoy, Menu, PanelsLeft } from "lucide-react";
+import { TrendingUp, Building2, CalendarDays, Handshake, LifeBuoy, Menu, PanelLeft } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { CapitalPartnersSidebar } from "@/components/CapitalPartnersSidebar";
 
@@ -10,7 +10,7 @@ export const InvestmentHeader = () => {
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger aria-label="Open sidebar" className="inline-flex items-center justify-center w-9 h-9 rounded-md border hover:bg-accent transition-colors">
-              <PanelsLeft className="w-5 h-5" />
+              <PanelLeft className="w-5 h-5" />
             </SheetTrigger>
             <SheetContent side="left" className="p-0 w-80 max-w-[85vw]">
               <SheetHeader className="px-4 py-3 border-b">
