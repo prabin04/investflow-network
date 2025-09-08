@@ -1,0 +1,72 @@
+{
+  "discovery_date": "2025-09-08",
+  "notes": "List of assets/data intentionally left as placeholders. Do not fabricate content. Replace with real items when available.",
+  "required_assets": [
+    {
+      "key": "site_brand_logo",
+      "status": "missing",
+      "placeholder": "public/REPLACE_WITH_REAL_LOGO.svg",
+      "details": "Primary brand logo for site header/footer. SVG or PNG."
+    },
+    {
+      "key": "brand_blurb",
+      "status": "missing",
+      "placeholder": "TBD",
+      "details": "One-sentence brand description for footer."
+    },
+    {
+      "key": "privacy_policy_text",
+      "status": "missing",
+      "placeholder": "TBD",
+      "details": "Privacy policy copy or link."
+    },
+    {
+      "key": "companies_dataset",
+      "status": "missing",
+      "placeholder": "data/companies_seed.json",
+      "details": "Authoritative list of companies with strict schema."
+    },
+    {
+      "key": "capital_partners_entry",
+      "status": "missing",
+      "placeholder": "data/companies_seed.json -> company slug 'capital-partners' with placeholders",
+      "details": "Stub entry only; do not fabricate portfolio items."
+    },
+    {
+      "key": "events_dataset",
+      "status": "missing",
+      "placeholder": "data/events_seed.json",
+      "details": "Existing events or seed for testing."
+    },
+    {
+      "key": "newsletter_config",
+      "status": "missing",
+      "placeholder": "TBD",
+      "details": "External email/CRM integration settings. Keep disabled until provided."
+    },
+    {
+      "key": "contact_email",
+      "status": "missing",
+      "placeholder": "partners@capital.example",
+      "details": "Official contact email for 'Contact' CTA."
+    },
+    {
+      "key": "social_links",
+      "status": "missing",
+      "placeholder": [],
+      "details": "Official social URLs for footer and company profiles."
+    },
+    {
+      "key": "company_logos",
+      "status": "partially_available",
+      "placeholder": "Use per-company 'logo_url' or hide if undefined",
+      "details": "Found example images in src/assets but not mapped to companies."
+    },
+    {
+      "key": "company_hero_images",
+      "status": "partially_available",
+      "placeholder": "Use per-company 'hero_image_url' if provided",
+      "details": "Images present in src/assets (biotech/energy/robotics/tech)."
+    }
+  ]
+}
