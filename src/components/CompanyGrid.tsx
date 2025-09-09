@@ -24,12 +24,12 @@ const createRisingGraph = (color: string) => `data:image/svg+xml,${encodeURIComp
 `)}`;
 
 const items = [
-  { src: techStartupImage, alt: "Technology company image (placeholder)", name: null, description: null },
-  { src: energyCompanyImage, alt: "Energy company image (placeholder)", name: null, description: null },
-  { src: createRisingGraph("#1c507f"), alt: "Sales growth chart showing rising trend", name: null, description: null },
-  { src: roboticsCompanyImage, alt: "Robotics company image (placeholder)", name: null, description: null },
-  { src: biotechCompanyImage, alt: "Biotech company image (placeholder)", name: null, description: null },
-  { src: createRisingGraph("#059669"), alt: "Revenue growth chart showing upward trajectory", name: null, description: null },
+  { src: techStartupImage, alt: "Technology company image (placeholder)", name: "Placeholder Tech Co.", description: "TBD — replace with provided 1-line description." },
+  { src: energyCompanyImage, alt: "Energy company image (placeholder)", name: "Placeholder Energy Co.", description: "TBD — replace with provided 1-line description." },
+  { src: createRisingGraph("#1c507f"), alt: "Sales growth chart showing rising trend", name: "Growth Metrics (Placeholder)", description: "TBD — replace with provided 1-line description." },
+  { src: roboticsCompanyImage, alt: "Robotics company image (placeholder)", name: "Placeholder Robotics Co.", description: "TBD — replace with provided 1-line description." },
+  { src: biotechCompanyImage, alt: "Biotech company image (placeholder)", name: "Placeholder Biotech Co.", description: "TBD — replace with provided 1-line description." },
+  { src: createRisingGraph("#059669"), alt: "Revenue growth chart showing upward trajectory", name: "Revenue Insights (Placeholder)", description: "TBD — replace with provided 1-line description." },
 ];
 
 export const CompanyGrid = () => {
