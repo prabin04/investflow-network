@@ -10,6 +10,13 @@ const capitalPartners = [
 ];
 
 export const CapitalPartnersSidebar = () => {
+  const fundingLogos = [
+    { src: "/Innovation_Norway_Logo.png", alt: "Innovation Norway logo" },
+    { src: "/skatt.png", alt: "Skattefunn logo" },
+    { src: "/siva.png", alt: "SIVA logo" },
+    { src: "/edih.png", alt: "EDIH logo" },
+  ];
+
   return (
     <div className="w-72 max-w-full bg-surface-subtle border-r border-border-light p-6 md:sticky md:top-0 md:h-[calc(100vh-64px)] overflow-auto">
       <div className="mb-6">
@@ -54,36 +61,11 @@ export const CapitalPartnersSidebar = () => {
         <div className="mt-6">
           <h4 className="text-sm font-semibold text-text-primary mb-3">Norwegian & EU Partners</h4>
           <div className="grid grid-cols-2 gap-3">
-            <div className="p-2 bg-white rounded border border-border-light text-center">
-              <div className="w-8 h-8 mx-auto mb-1 bg-blue-100 rounded flex items-center justify-center">
-                <span className="text-xs font-bold text-blue-600">IN</span>
+            {fundingLogos.map((logo) => (
+              <div key={logo.src} className="p-2 bg-white rounded border border-border-light flex items-center justify-center">
+                <img src={logo.src} alt={logo.alt} className="max-h-8 w-auto object-contain" loading="lazy" />
               </div>
-              <p className="text-xs text-text-secondary">Innovation Norway</p>
-            </div>
-            <div className="p-2 bg-white rounded border border-border-light text-center">
-              <div className="w-8 h-8 mx-auto mb-1 bg-green-100 rounded flex items-center justify-center">
-                <span className="text-xs font-bold text-green-600">SF</span>
-              </div>
-              <p className="text-xs text-text-secondary">Skattefunn</p>
-            </div>
-            <div className="p-2 bg-white rounded border border-border-light text-center">
-              <div className="w-8 h-8 mx-auto mb-1 bg-purple-100 rounded flex items-center justify-center">
-                <span className="text-xs font-bold text-purple-600">SIVA</span>
-              </div>
-              <p className="text-xs text-text-secondary">SIVA</p>
-            </div>
-            <div className="p-2 bg-white rounded border border-border-light text-center">
-              <div className="w-8 h-8 mx-auto mb-1 bg-orange-100 rounded flex items-center justify-center">
-                <span className="text-xs font-bold text-orange-600">EDIH</span>
-              </div>
-              <p className="text-xs text-text-secondary">EDIH</p>
-            </div>
-            <div className="p-2 bg-white rounded border border-border-light text-center col-span-2">
-              <div className="w-8 h-8 mx-auto mb-1 bg-yellow-100 rounded flex items-center justify-center">
-                <span className="text-xs font-bold text-yellow-600">EU</span>
-              </div>
-              <p className="text-xs text-text-secondary">EU Innovation Programs</p>
-            </div>
+            ))}
           </div>
         </div>
       </div>
