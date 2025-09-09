@@ -5,7 +5,6 @@ const capitalPartners = [
   { id: 1, name: "Sequoia Capital", type: "VC Fund", icon: Building2 },
   { id: 2, name: "Andreessen Horowitz", type: "VC Fund", icon: Building2 },
   { id: 3, name: "Angel Investors Network", type: "Angel Group", icon: Users },
-  { id: 4, name: "TPG Growth", type: "PE Fund", icon: Briefcase },
   { id: 5, name: "First Round Capital", type: "VC Fund", icon: TrendingUp },
 ];
 
