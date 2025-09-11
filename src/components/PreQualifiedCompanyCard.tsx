@@ -7,21 +7,35 @@ interface PreQualifiedCompanyCardProps {
   imageAlt: string;
   name?: string | null;
   description?: string | null;
+  videoSrc?: string | null;
 }
 
-export const PreQualifiedCompanyCard = ({ imageSrc, imageAlt, name, description }: PreQualifiedCompanyCardProps) => {
+export const PreQualifiedCompanyCard = ({ imageSrc, imageAlt, name, description, videoSrc }: PreQualifiedCompanyCardProps) => {
   const displayName = (name ?? "").trim().length > 0 ? name : "TBD";
   const displayDescription = (description ?? "").trim().length > 0 ? description : "TBD";
 
   return (
     <Card className="bg-surface-elevated border-border-light shadow-card hover:shadow-elevated transition-all duration-200 overflow-hidden">
       <div className="aspect-video overflow-hidden relative">
-        <img
-          src={imageSrc}
-          alt={imageAlt}
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
+        {videoSrc ? (
+          <video
+            src={videoSrc}
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            playsInline
+            loop
+            controls={false}
+            preload="metadata"
+          />
+        ) : (
+          <img
+            src={imageSrc}
+            alt={imageAlt}
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+        )}
       </div>
 
       <div className="p-6">

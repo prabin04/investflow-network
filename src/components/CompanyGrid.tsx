@@ -28,19 +28,22 @@ const items = [
     src: techStartupImage, 
     alt: "Technology company image (placeholder)", 
     name: "NeuraTech Labs", 
-    description: "AI-driven solutions empowering businesses with smarter automation." 
+    description: "AI-driven solutions empowering businesses with smarter automation.",
+    videoSrc: "https://cdn.pixabay.com/video/2016/12/15/6785-195986684_large.mp4",
   },
   { 
     src: energyCompanyImage, 
     alt: "Energy company image (placeholder)", 
     name: "Voltura Energy", 
-    description: "Sustainable energy provider driving the transition to a greener future." 
+    description: "Sustainable energy provider driving the transition to a greener future.",
+    videoSrc: "https://media.istockphoto.com/id/1165460558/video/social-media-marketing.mp4?s=mp4-640x640-is&k=20&c=D_s92tWBDsEXlAitNGyigZhm8j81RSFmoN_5jMXy3oM=",
   },
   { 
     src: createRisingGraph("#1c507f"), 
     alt: "Sales growth chart showing rising trend", 
     name: "Elevate Analytics", 
-    description: "Data insights platform delivering measurable growth strategies." 
+    description: "Data insights platform delivering measurable growth strategies.",
+    videoSrc: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
   },
   { 
     src: roboticsCompanyImage, 
@@ -79,6 +82,7 @@ export const CompanyGrid = () => {
             imageAlt={item.alt}
             name={item.name}
             description={item.description}
+            videoSrc={(item as any).videoSrc}
           />
         ))}
       </div>
