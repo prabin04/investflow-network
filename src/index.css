@@ -136,3 +136,30 @@ All colors MUST be HSL.
     background-position: 0 0;
   }
 }
+
+/* Global scrollbar styling */
+@layer base {
+  /* Firefox */
+  :root {
+    scrollbar-color: #1D5285 transparent;
+    scrollbar-width: thin;
+  }
+
+  /* WebKit-based browsers */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #1D5285;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #18456F;
+  }
+}
