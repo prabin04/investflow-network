@@ -15,7 +15,7 @@ export const PreQualifiedCompanyCard = ({ imageSrc, imageAlt, name, description,
   const displayDescription = (description ?? "").trim().length > 0 ? description : "TBD";
 
   return (
-    <Card className="bg-surface-elevated border-border-light shadow-card hover:shadow-elevated transition-all duration-200 overflow-hidden">
+    <Card className="bg-surface-elevated border-border-light shadow-lg hover:shadow-xl transition-all duration-200 overflow-hidden">
       <div className="aspect-video overflow-hidden relative">
         {videoSrc ? (
           <video
